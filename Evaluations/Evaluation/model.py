@@ -49,7 +49,9 @@ class Model:
             scoring="neg_mean_squared_error"
             #scoring = "mean_squared_error"
         scores = cross_val_score(self.model, data.iloc[:, 2:], data["label"], cv=10, scoring=scoring)
-        #print(scoring, np.mean(scores))
-        print(scoring, np.sqrt(-scores))
-        print("mean", np.sqrt(-scores).mean())
+        if self.task ==0:
+            print(scoring, np.mean(scores))
+        else:
+            print(scoring, np.sqrt(-scores))
+            print("mean", np.sqrt(-scores).mean())
 
